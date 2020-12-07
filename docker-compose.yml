@@ -1,0 +1,27 @@
+version: '3'
+services:
+  # The app
+  app:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html:delegated
+
+  # The Database
+  database:
+    image: mariadb:10.4
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "MYSQL_DATABASE=cookies_db"
+      - "MYSQL_USER=cookie_monster"
+      - "MYSQL_PASSWORD=ng9N3yhBunAUkjBPmaNwGMak"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+      - "3307:3306"
+
+volumes:
+  dbdata:
