@@ -6,7 +6,7 @@ create table cookies (
   calories int(5),
   primary key (id)
 );
-INSERT INTO cookies_db
+INSERT INTO cookies
 VALUES
   (1, brownies, 200g, 3000),
   (2, strong_chocolate, 215g, 2000),

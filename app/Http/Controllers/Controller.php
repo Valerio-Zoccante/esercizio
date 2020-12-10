@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Builder;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
-class Controller extends BaseController
+class CookieController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    /**
+     * Show a list of all cookies.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $cookies = DB::table('cookies')->get();
+
+        return view('index', compact('cookies'));
+    }
 }
