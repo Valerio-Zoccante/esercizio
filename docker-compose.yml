@@ -14,7 +14,7 @@ services:
   database:
     image: mariadb:10.4
     volumes:
-      - dbdata:/var/lib/mysql
+      - /database/db.sql:/var/lib/mysql
     environment:
       - "MYSQL_DATABASE=cookies_db"
       - "MYSQL_USER=cookie_monster"
