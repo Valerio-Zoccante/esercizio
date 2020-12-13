@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
-     * Show a list of all cookies.
+     * Show details of all cookies.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -18,9 +18,16 @@ class HomeController extends Controller
     {
         $cookies = DB::table('cookies')->orderBy('name','ASC')->get();
         $arrayCookies = [];
+        $arrayIngredients = [];
+        $i = 0;
         foreach ($cookies as $cookie) {
-            $arrayCookies[] = $cookie;
+            $arrayCookies[$i] = $cookie;
+            $ingredients = DB::table('ingredients')->where('cookie_id', $cookie->id)->orderBy('name','ASC')->get();
+            foreach ($ingredients as $ingredient) {
+              $arrayIngredients[$i][] = $ingredient;
+            }
+            $i++;
         }
-        return view('cookie', compact('arrayCookies'));
+        return view('cookie', compact('arrayCookies', 'arrayIngredients'));
     }
 }

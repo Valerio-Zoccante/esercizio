@@ -18,7 +18,7 @@ class IngredientsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-      for ($i=0; $i < 20; $i++) {
+      for ($i=0; $i < 5; $i++) {
         $ingredient = new Ingredient;
         $cookie = Cookie::inRandomOrder()->first();
         $ingredient->cookie_id = $cookie->id;
