@@ -15,6 +15,7 @@ services:
     image: mariadb:10.4
     volumes:
       - dbdata:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
     environment:
       - "MYSQL_DATABASE=cookies_db"
       - "MYSQL_USER=cookie_monster"
@@ -25,3 +26,4 @@ services:
 
 volumes:
   dbdata:
+    driver: local

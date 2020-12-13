@@ -1,13 +1,5 @@
 ## TakeAway Junior Code Challenge
 
-#### Pre Requirements
-- Have Docker installed & running
-- Have Git installed and running
-- Make sure no related program (i.e.; Wamp / Mamp or Vagrant) is running
-
-#### Getting started
-- Open your terminal and cd into this folder
-- Execute "./init.sh"
-- Wait for it to complete (this can take some time)
-- Open ```http://localhost:8080``` in your browser
-- Happy coding :) 
+#### Setup environment
+- Please run follwing command to execute migration of related cookies table: docker-compose exec app php artisan migrate
+- Please run the following command for seeding the data into the DB: docker-compose exec app php artisan db:seed
