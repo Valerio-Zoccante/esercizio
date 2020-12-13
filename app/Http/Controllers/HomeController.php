@@ -16,35 +16,11 @@ class HomeController extends Controller
      */
     public function get()
     {
-        $test = DB::table('cookies')->get();
-
-      $cookies = [
-        [
-          'name' => 'brownies',
-          'weight' => '200g',
-          'calories' => '3000'
-        ],
-        [
-          'name' => 'strong_chocolate',
-          'weight' => '215g',
-          'calories' => '2000'
-        ],
-        [
-          'name' => 'dark_chocolate',
-          'weight' => '215g',
-          'calories' => '2700'
-        ],
-        [
-          'name' => 'white_chocolate',
-          'weight' => '155g',
-          'calories' => '1300'
-        ],
-        [
-          'name' => 'vegan_cookies',
-          'weight' => '157g',
-          'calories' => '1000'
-        ]
-      ];
-        return view('cookie', compact('cookies', 'test'));
+        $cookies = DB::table('cookies')->orderBy('name','ASC')->get();
+        $arrayCookies = [];
+        foreach ($cookies as $cookie) {
+            $arrayCookies[] = $cookie;
+        }
+        return view('cookie', compact('arrayCookies'));
     }
 }
